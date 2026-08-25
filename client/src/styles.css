@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:wght@600&display=swap");
+
+:root {
+  --bg: #f6f2e8;
+  --paper: #fffdf8;
+  --ink: #1f2a2f;
+  --accent: #b62025;
+  --accent-soft: #f1b2a6;
+  --brand-2: #136f63;
+  --line: #e7ddce;
+  --ok: #176b33;
+  --warn: #9f3f00;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 10%, #f7d5cb 0, transparent 36%),
+    radial-gradient(circle at 90% 18%, #cae8df 0, transparent 30%),
+    var(--bg);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Source Serif 4", serif;
+  margin: 0 0 0.4rem;
+}
+
+.shell {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-shell {
+  min-height: 100vh;
+  place-content: center;
+}
+
+.hero-strip {
+  height: 10px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), #d76f4d, var(--brand-2));
+  animation: stretch 1100ms ease-out;
+}
+
+@keyframes stretch {
+  from {
+    transform: scaleX(0.2);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.topbar {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar p {
+  margin: 0;
+  color: #5f6f76;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tabs button,
+button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  transition: transform 150ms ease, filter 150ms ease;
+}
+
+.tabs button {
+  background: #e5d9c7;
+  color: var(--ink);
+}
+
+.tabs .active,
+.switcher .active {
+  background: var(--brand-2);
+  color: #fff;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.98);
+}
+
+button.ghost {
+  background: #f2ece1;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem;
+  animation: rise 320ms ease;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.grid-form h4,
+.grid-form button,
+.grid-form textarea {
+  grid-column: 1 / -1;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #cfbfaa;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  background: #fffdf9;
+}
+
+textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.switcher {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.sub {
+  color: #51626a;
+}
+
+.list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: #fffcf6;
+}
+
+.card.unread {
+  border-left: 6px solid var(--accent);
+}
+
+.card.read {
+  opacity: 0.76;
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.stats-grid article {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: #f9f5ec;
+}
+
+.stats-grid strong {
+  display: block;
+  font-size: 1.4rem;
+}
+
+.error,
+.status {
+  margin: 0;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+}
+
+.error {
+  background: #fde7e2;
+  color: #8c1d18;
+}
+
+.status {
+  background: #e7f4ef;
+  color: var(--ok);
+}
+
+@media (max-width: 860px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-form {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
